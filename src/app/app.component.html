@@ -12,7 +12,7 @@ ngModelGroup
 [(ngModel)]="userModel.name"
 Square brackets for property binding
 -->
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Name</label>
       <input
@@ -73,7 +73,7 @@ Square brackets for property binding
       [class.is-invalid]="topicHasError && topic.touched"
       name="topics" #topic="ngModel">
         <option value=""> Make a choice </option>
-        <option *ngFor="let topic of topics" >{{ topic }}</option>
+        <option [value]="topic" *ngFor="let topic of topics" >{{ topic }}</option>
       </select>
       <small class="text-danger" *ngIf="topicHasError && topic.touched"> Please choose  a topic </small>
     </div>
